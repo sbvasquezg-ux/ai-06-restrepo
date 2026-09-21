@@ -1,0 +1,51 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/restrepo-beamer}[2026/09/20 Acemoglu Restrepo course style]
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{amsmath,amssymb,booktabs,graphicx,hyperref,xcolor,tikz,listings}
+\usetheme{default}
+\usecolortheme{seahorse}
+\definecolor{ARViolet}{HTML}{6D28D9}
+\definecolor{ARCyan}{HTML}{0E7490}
+\definecolor{ARAmber}{HTML}{F59E0B}
+\definecolor{ARRose}{HTML}{E11D48}
+\definecolor{ARPaper}{HTML}{F4F1FD}
+\definecolor{ARInk}{HTML}{14121F}
+\setbeamercolor{normal text}{fg=ARInk,bg=white}
+\setbeamercolor{structure}{fg=ARViolet}
+\setbeamercolor{frametitle}{fg=ARViolet,bg=ARPaper}
+\setbeamercolor{block title}{fg=white,bg=ARViolet}
+\setbeamercolor{block body}{fg=ARInk,bg=ARPaper}
+\setbeamercolor{alerted text}{fg=ARRose}
+\setbeamercolor{author in head/foot}{fg=ARCyan,bg=ARPaper}
+\setbeamercolor{date in head/foot}{fg=white,bg=ARViolet}
+\setbeamercolor{keybox}{fg=ARInk,bg=ARAmber!18}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{ARViolet}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{ARCyan}$\bullet$}
+\setbeamertemplate{enumerate item}{\color{ARViolet}\insertenumlabel.}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{frametitle}{%
+ \nointerlineskip\begin{beamercolorbox}[wd=\paperwidth,sep=.21cm,leftskip=.35cm]{frametitle}
+ \usebeamerfont{frametitle}\insertframetitle\strut
+ \end{beamercolorbox}\nointerlineskip{\color{ARAmber}\hrule height 1pt}}
+\setbeamertemplate{footline}{%
+ \leavevmode\hbox{%
+ \begin{beamercolorbox}[wd=.84\paperwidth,ht=2.6ex,dp=1.2ex,leftskip=1em]{author in head/foot}
+ {\hypersetup{linkcolor=ARCyan}\insertshorttitle}
+ \end{beamercolorbox}%
+ \begin{beamercolorbox}[wd=.16\paperwidth,ht=2.6ex,dp=1.2ex,center]{date in head/foot}
+ \insertframenumber/\inserttotalframenumber
+ \end{beamercolorbox}}}
+\setbeamersize{text margin left=.65cm,text margin right=.65cm}
+\hypersetup{colorlinks=true,urlcolor=ARCyan,linkcolor=ARViolet}
+\newcommand{\paperref}{Acemoglu y Restrepo, NBER WP 22252, rev. junio 2017}
+\newcommand{\RepoURL}{https://github.com/sbvasquezg-ux/ai-06-restrepo}
+\newcommand{\sourcefoot}[1]{\vfill\par{\fontsize{7}{8}\selectfont\color{ARCyan}Fuente: #1\par}}
+\newenvironment{keybox}{\begin{beamercolorbox}[sep=.6em]{keybox}}{\end{beamercolorbox}}
+\lstdefinelanguage{Lean}{morekeywords={theorem,lemma,def,structure,where,by,have,exact,intro,apply,constructor,rcases,linarith,nlinarith,ring,field_simp,simp,import,namespace,end,variable},sensitive=true,morecomment=[l]{--}}
+\lstset{language=Lean,basicstyle=\ttfamily\scriptsize,backgroundcolor=\color{ARPaper},keywordstyle=\color{ARViolet}\bfseries,commentstyle=\color{ARCyan},numbers=none,showstringspaces=false,breaklines=true,columns=fullflexible,keepspaces=true}

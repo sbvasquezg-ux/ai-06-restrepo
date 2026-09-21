@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+<title id="title">The Race between Man and Machine</title><desc id="desc">Acemoglu y Restrepo. Salarios, tareas y participación laboral.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#6D28D9"/><stop offset="1" stop-color="#0E7490"/></linearGradient></defs>
+<rect width="1280" height="320" fill="url(#bg)"/>
+<rect x="58" y="276" width="1164" height="4" fill="#F59E0B"/>
+<text x="60" y="62" fill="white" font-family="Arial,sans-serif" font-size="19" letter-spacing="3">AI &amp; ECONOMIC MODELING · REPOSITORY 06</text>
+<text x="60" y="130" fill="white" font-family="Georgia,serif" font-size="49" font-weight="bold">The Race between Man and Machine</text>
+<text x="60" y="180" fill="white" font-family="Arial,sans-serif" font-size="24">Growth, Factor Shares, and Employment</text>
+<text x="60" y="238" fill="white" font-family="Arial,sans-serif" font-size="22">Daron Acemoglu · Pascual Restrepo · AER 2018</text>
+</svg>
