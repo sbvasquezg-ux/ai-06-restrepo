@@ -1,6 +1,6 @@
 # Derivación manuscrita y alcance de la foto recibida
 
-Copiar a papel esta derivación (media carilla). Usar $W$ para salario real, no $w=W/\gamma(I)$ normalizado. Fuente: **NBER WP 22252, rev. junio 2017**, Prop. 2 pp. 11–12, Prop. 3 pp. 12–13, prueba p. B-13, ecs. (B9)–(B10).
+Guía de contraste (media carilla) para el caso de oferta laboral creciente. Usar $W$ para salario real, no $w=W/\gamma(I)$ normalizado. Fuente: **NBER WP 22252, rev. junio 2017**, Prop. 2 pp. 11–12, Prop. 3 pp. 12–13, prueba p. B-13, ecs. (B9)–(B10).
 
 Bajo Assumptions 1–3, $K,N$ fijos, oferta creciente con $\varepsilon_L>0$ y $N-1<I^*=I<\widetilde I$ y $W/R<\gamma(N)$, escribir
 

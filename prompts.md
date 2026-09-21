@@ -296,3 +296,9 @@ esta es mi parte escrita, porfa incluyela y termina todo
 ```
 
 Adjunto original conservado en `hand/manual-verification.png`. No se presenta una transcripción automática de la escritura como si fuera un prompt.
+
+## Respuesta relevante del asistente — transcripción literal
+
+```text
+Tu derivación separa bien desplazamiento y productividad para el caso de trabajo fijo. Añadiré dos precisiones junto a la foto: “sin ninguna condición” debe entenderse dentro de ese régimen interior, y el salario baja cuando el ahorro de costos tiende a cero, no ante cualquier automatización marginal. Conservaré la imagen original sin modificarla.
+```

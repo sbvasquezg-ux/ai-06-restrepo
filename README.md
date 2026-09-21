@@ -62,9 +62,9 @@ Para $s=1$, $P_I=\ln[W/(R\gamma(I))]$. Fuente: NBER rev. 2017, Prop. 3 p. 13 y p
 
 ## Formalización en Lean
 
-**Run propio parcial, con error semántico detectado.** Agente `gpt-5.6-sol`, esfuerzo `xhigh`; Python 3.12.14. `lake build +AR18RaceManMachine` terminó con código 0; el **check --fast también terminó con código 0**, pero solo ejecutó el build de `PaperInterface` y una comprobación de diferencias. Salida íntegra: [lean/CHECK_OUTPUT.txt](lean/CHECK_OUTPUT.txt).
+**Run propio parcial, reparado y revisado.** Agente `gpt-5.6-sol`, esfuerzo `xhigh`; Python 3.12.14. `lake build +AR18RaceManMachine` y el **check --fast terminaron con código 0**. El check rápido compila `PaperInterface` y comprueba aislamiento de módulos y diferencias; su [salida íntegra](lean/CHECK_OUTPUT.txt) no certifica equivalencia con el modelo.
 
-El endpoint de Prop. 3 verifica consecuencias algebraicas de una descomposición suministrada; no deriva esas expresiones del equilibrio. El de Prop. 2 contiene una **traducción incorrecta de denominadores** respecto de NBER rev. 2017, p. 11. Compilar no valida ese vínculo con el paper. Se conserva la carpeta íntegra, incluyendo el `status.json` de scaffold sin terminar, por la regla de copia literal. El agente se detuvo por límite de uso antes del cierre y las revisiones independientes. Véase [auditoría externa a la copia](extra/notes.md#lean-alcance-real-y-error-de-traducción). No se acredita ninguna proposición completa del paper como formalizada.
+Se corrigieron dentro de AppliedModelingLib tres fórmulas de Prop. 2 (NBER rev. 2017, p. 11) antes de volver a copiar la carpeta entera. La revisión independiente encuentra **dos fragmentos algebraicos coincidentes y ninguna proposición completa cubierta**: Prop. 2 aporta signos de expresiones dadas; Prop. 3, consecuencias de una descomposición suministrada. Falta derivar esas expresiones desde el equilibrio y formalizar los demás resultados. El estado conservado es `partially formalized`; no existe cierre global certificado. Véase [alcance y revisión](extra/notes.md#lean-alcance-real-y-error-de-traducción).
 
 ## Reproducción
 

@@ -14,15 +14,15 @@ namespace AR18RaceManMachine
 /-- The technology-constrained response of `log (W / R)` to automation in
 Proposition 2. -/
 noncomputable def constrainedAutomationEffect (sigmaHat epsilonL lambdaI : ℝ) : ℝ :=
-  -1 / (sigmaHat + epsilonL * lambdaI)
+  -lambdaI / (sigmaHat + epsilonL)
 
 /-- The technology-constrained response of `log (W / R)` to new tasks. -/
 noncomputable def constrainedNewTaskEffect (sigmaHat epsilonL lambdaN : ℝ) : ℝ :=
-  1 / (sigmaHat + epsilonL * lambdaN)
+  lambdaN / (sigmaHat + epsilonL)
 
 /-- The elasticity when firms may reassign tasks across factors. -/
 noncomputable def freeElasticity (sigmaHat epsilonGamma lambdaI : ℝ) : ℝ :=
-  sigmaHat + 1 / (epsilonGamma * lambdaI)
+  sigmaHat + lambdaI / epsilonGamma
 
 /-- The response of `log (W / R)` to capital, for a supplied substitution
 elasticity. -/

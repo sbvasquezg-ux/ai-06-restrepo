@@ -8,13 +8,13 @@ theorem proposition2ComparativeStaticsCore_impl :
     hsigma hepsilon hlambdaI hlambdaN hgamma
   have hfree : sigmaHat < freeElasticity sigmaHat epsilonGamma lambdaI := by
     simp only [freeElasticity]
-    have : 0 < 1 / (epsilonGamma * lambdaI) := by positivity
+    have : 0 < lambdaI / epsilonGamma := by positivity
     linarith
   have hfreePos : 0 < freeElasticity sigmaHat epsilonGamma lambdaI := by linarith
-  have hdenI : 0 < sigmaHat + epsilonL * lambdaI := by positivity
+  have hdenI : 0 < sigmaHat + epsilonL := by positivity
   constructor
   · simp only [constrainedAutomationEffect]
-    exact div_neg_of_neg_of_pos (by norm_num) hdenI
+    exact div_neg_of_neg_of_pos (by linarith) hdenI
   constructor
   · simp only [constrainedNewTaskEffect]
     positivity

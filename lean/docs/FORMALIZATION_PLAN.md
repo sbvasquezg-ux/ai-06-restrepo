@@ -10,11 +10,18 @@ after routine proof steps.
 
 ## Initial Outside-Lean Paper Audit
 
-- Source version / local files inspected:
-- Source/version mismatch notes:
-- Complete named-result ledger status:
+- Source version / local files inspected: NBER Working Paper 22252, revised
+  June 2017; ignored `source/paper.pdf` and `source/source.txt`.
+- Source/version mismatch notes: Proposition 3's capital-threshold wording
+  differs from the later AER version; this formalization follows and quotes
+  the NBER source only.
+- Complete named-result ledger status: source-first draft in
+  `docs/SOURCE_INVENTORY.md`; independent holistic review pending.
 - Formula sanity check:
-  - Signs, constants, normalizations, quantifiers, domains:
+  - Signs, constants, normalizations, quantifiers, domains: Proposition 2
+    checked directly as `-LambdaI/(sigmaHat+epsilonL)`,
+    `LambdaN/(sigmaHat+epsilonL)`, and
+    `sigmaFree=sigmaHat+LambdaI/epsilonGamma`.
   - Density vs mass / likelihood-kernel representation issues:
   - Dependency map between named source results:
   - Formula-bearing displayed claims that need derivation, not source-row assumptions:
@@ -48,9 +55,14 @@ after routine proof steps.
 
 ## Source Inventory
 
-- Definitions / formatted paper objects:
-- Named lemmas / propositions / theorems / corollaries:
-- Named assumptions / model conditions used by those results:
+- Definitions / formatted paper objects: static task model, task assignment
+  cutoff, labor supply, dynamic technology, research technologies, skill
+  extension, creative destruction, welfare extension; exact prose-definition
+  spans still require independent inventory review.
+- Named lemmas / propositions / theorems / corollaries: see
+  `docs/SOURCE_INVENTORY.md`.
+- Named assumptions / model conditions used by those results: Assumptions 1,
+  2, 3, 1 prime, 4, 1 double-prime, 2 prime, and 2 double-prime.
 - Deep-only prose, standalone formulas, algorithms, figures, simulations, and
   computational examples (record scope disposition; do not create normal-mode
   proof targets merely because they are numbered or displayed):
@@ -89,7 +101,9 @@ the statement skeleton is still cheap, rather than during final closeout.
 
 | Order | Source-semantic item | Dependencies | Owning module / agent | Statement frozen | Proof status |
 |---:|---|---|---|---|---|
-| 1 | Fill from the independent source inventory | none | | no | pending |
+| 1 | Proposition 2 algebraic sign core | displayed response formulas | MainTheorems.lean | no | checked support seam |
+| 2 | Proposition 3 wage/rental decomposition | Proposition 2 signs and positive productivity effects | MainTheorems.lean | no | checked support seam |
+| 3 | Full named-result inventory | source model and earlier results | unassigned | no | pending |
 
 ## Initial Proof Strategy
 

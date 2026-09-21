@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "paper": "AR18RaceManMachine",
+  "source_url": "https://www.nber.org/papers/w22252",
+  "source_version": "NBER Working Paper 22252, revised June 2017",
+  "source_artifact_path": "papers/AR18RaceManMachine/source/source.txt",
+  "source_artifact_sha256": "364324083516ef31703b52dbaad0405a22a39cd796d0b718587fc01d69ad995e",
+  "source_inventory_kind": "pinned_statement_target_scaffold",
+  "source_curated": false,
+  "seed_scaffold": true,
+  "source_coverage_mode": "named_theoretical_statements",
+  "semantic_contract_policy": {
+    "schema": 1,
+    "activation": "These two rows are partial proof-support transcriptions. They must not be promoted to source-claim semantic contracts until a complete one-Spec-per-source-claim interface and independent source review exist.",
+    "required_fields": [
+      "spec_declaration",
+      "evidence_declaration",
+      "evidence_mode",
+      "semantic_shape"
+    ],
+    "evidence_modes": ["proves", "refutes"],
+    "semantic_shapes": ["plain"]
+  },
+  "items": {
+    "proposition2_comparative_statics": {
+      "statement": "Proposition 2 (Comparative statics), including both allocation regimes and the labor-share and employment clauses.",
+      "source_item": "Proposition 2 (Comparative statics)",
+      "source_kind": "proposition",
+      "source_location": "papers/AR18RaceManMachine/source/source.txt:596-638",
+      "source_url": "https://www.nber.org/papers/w22252",
+      "source_status": "formalization_pending; checked algebraic support seam is incomplete",
+      "spec_lean_declarations": [
+        "proposition2ComparativeStaticsCoreSpec"
+      ],
+      "proof_lean_declarations": [
+        "proposition2ComparativeStaticsCore"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "proposition2ComparativeStaticsCoreSpec",
+        "evidence_declaration": "proposition2ComparativeStaticsCore",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "proposition3_productivity_wages_factor_prices": {
+      "statement": "Proposition 3 (Impact of technology on productivity, wages, and factor prices), including both allocation regimes and the capital-threshold clause.",
+      "source_item": "Proposition 3 (Impact of technology on productivity, wages, and factor prices)",
+      "source_kind": "proposition",
+      "source_location": "papers/AR18RaceManMachine/source/source.txt:663-710",
+      "source_url": "https://www.nber.org/papers/w22252",
+      "source_status": "formalization_pending; checked wage/rental decomposition seam is incomplete",
+      "spec_lean_declarations": [
+        "proposition3WageRentalDecompositionSpec"
+      ],
+      "proof_lean_declarations": [
+        "proposition3WageRentalDecomposition"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "proposition3WageRentalDecompositionSpec",
+        "evidence_declaration": "proposition3WageRentalDecomposition",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    }
+  }
+}

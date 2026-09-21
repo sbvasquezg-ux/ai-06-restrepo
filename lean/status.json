@@ -7,12 +7,12 @@
   "source_inventory_review_required": true,
   "repository_visibility": "private_only",
   "build_target": "lake build +AR18RaceManMachine",
-  "status": "not started",
-  "main_caveat": "Replace with the public caveat or state that no caveat is known.",
-  "human_summary": "Replace with a concise public-facing note; leave empty for formalized papers unless a source-version or proof-route note matters.",
+  "status": "partially formalized",
+  "main_caveat": "The Lean development closes the algebraic sign core of Proposition 2 and the wage/rental decomposition consequences of Proposition 3. It does not yet derive those formulas from the static equilibrium and Assumptions 1--3, prove the NBER capital-threshold clause, or formalize the remaining named results.",
+  "human_summary": "Two source-facing algebraic proof seams from Propositions 2 and 3 are checked. The equilibrium bridges and the version-sensitive NBER wage-threshold result remain open.",
   "human_summary_review": {
     "status": "draft",
-    "note": "Set to human_approved only after a human has written or explicitly approved this summary; do not rewrite a human_approved summary without explicit human instruction."
+    "note": "Agent-authored partial-status summary; not human-approved."
   },
   "review_entrypoint": "papers/AR18RaceManMachine/FINAL_VALIDATION_REPORT.md",
   "human_review": {
@@ -84,14 +84,23 @@
     "assumption_policy": "strict",
     "assumption_names": [],
     "source_definition_names": [],
-    "proposition_spec_proofs": {},
+    "proposition_spec_proofs": {
+      "AR18RaceManMachine.proposition2ComparativeStaticsCoreSpec": "AR18RaceManMachine.proposition2ComparativeStaticsCore",
+      "AR18RaceManMachine.proposition3WageRentalDecompositionSpec": "AR18RaceManMachine.proposition3WageRentalDecomposition"
+    },
     "paper_coverage_required": false,
-    "include_names": [],
+    "include_names": [
+      "AR18RaceManMachine.proposition2ComparativeStaticsCoreSpec",
+      "AR18RaceManMachine.proposition3WageRentalDecompositionSpec"
+    ],
     "slices": [
       {
         "id": "all",
         "title": "All source-facing review rows",
-        "names": []
+        "names": [
+          "AR18RaceManMachine.proposition2ComparativeStaticsCoreSpec",
+          "AR18RaceManMachine.proposition3WageRentalDecompositionSpec"
+        ]
       }
     ]
   }

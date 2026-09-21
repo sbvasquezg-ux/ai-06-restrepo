@@ -7,6 +7,7 @@
 - Compilador: **LuaHBTeX 1.24.0 / TeX Live 2026**. `presentation.pdf` contiene **16 páginas**, un único deck, sin animaciones. Compilación final sin errores ni advertencias de cajas desbordadas.
 - `sim.py`: verificaciones simbólicas, residuos de equilibrio y diferencias finitas aprobadas. Las figuras usan únicamente elaboración propia.
 - Foto manuscrita: **recibida el 21 de septiembre de 2026**, copiada sin retoques e incluida en la diapositiva 16. Su caso fija trabajo; `hand/README.md` y el deck explican sus condiciones y matizan dos frases demasiado generales.
+- Integridad de la foto: SHA-256 `245e8683c22d18b88a88be085e62707b4168669be776fd8304f3ba4419b57a5c`, idéntico al adjunto de la estudiante.
 - No hay una estimación causal ni calibración empírica. Las cifras pertenecen a una especialización ilustrativa.
 
 ## Salida de la simulación
@@ -29,53 +30,52 @@ Figures regenerated: extra/figures/displacement-productivity.pdf and .png
 
 Clone fuente del workflow: <https://github.com/nikhgarg/AppliedModelingLib>, commit `2db7d108cd3a2cb10148974bb2a77856e7d87428`. Se usó la skill `skills/econcs-formalizer/SKILL.md`, con el prompt de la usuaria y contexto técnico de rutas/runtime. Modelo del subagente: **GPT-5.6 Sol (`gpt-5.6-sol`), xhigh**. Toolchain: **Lean 4.30.0-rc2**. Se reutilizaron dependencias y cachés de compilación ya instaladas; no se copió una formalización de otro trabajo.
 
-El agente produjo su propio scaffold y dos endpoints. Se interrumpió por límite de uso antes de concluir el registro de estado, el mapa de fuente y las revisiones independientes. Por eso el README generado todavía dice `Not started`, hay texto de plantilla en `status.json`, no hay informe final ni DAG certificado y no se ha realizado cierre v11. **No se editaron esos archivos para que parecieran completos.**
+El primer run quedó interrumpido por límite de uso. El 21 de septiembre se reanudó el mismo workflow con el modelo requerido: se corrigieron las fórmulas, se reconstruyeron las pruebas y se actualizaron el estado y la documentación. El estado canónico de la copia final es **`partially formalized`**. El informe generado se conserva en [`lean/PARTIAL_FORMALIZATION_REPORT.md`](../lean/PARTIAL_FORMALIZATION_REPORT.md).
 
-La compilación estrecha real del módulo completo produjo:
+La compilación del módulo completo produjo `Build completed successfully (8316 jobs).` con **exit code 0**. El check pedido también terminó con **exit code 0**; su salida literal está en `lean/CHECK_OUTPUT.txt`. La salida del check rápido enumera `lake build +AR18RaceManMachine.PaperInterface` y `git diff --check`; entre ambos, el script también comprueba aislamiento de dependencias mediante el grafo de módulos Lean. Ese control no certifica correspondencia económica con el PDF. Un primer intento histórico no encontró `lake` en PATH; se corrigió activando `.elan/bin`. No fue un fallo de Python 3.12.
 
-```text
-Build completed successfully (8316 jobs).
-```
+### Qué se corrigió dentro del workflow
 
-El check pedido terminó con **exit code 0**. La salida literal, sin convertirla en una certificación más amplia, está en `lean/CHECK_OUTPUT.txt`. Para este scaffold incompleto, el comando ejecutó únicamente `lake build +AR18RaceManMachine.PaperInterface` y `git diff --check`. No revisó correspondencia económica ni cerró el inventario. Un primer intento local de check no encontró `lake` en PATH; se corrigió activando `.elan/bin` y se guardó la salida del intento final. No fue un fallo de Python 3.12.
+La inspección inicial contra **NBER rev. 2017, Prop. 2, p. 11** encontró tres traducciones incorrectas. Se repararon en AppliedModelingLib, no sobre la copia de entrega:
 
-### Qué encontró la inspección posterior
-
-Al contrastar el código generado con **NBER rev. 2017, Prop. 2, p. 11**, aparecen estas diferencias:
-
-| Objeto | PDF verificado | Código literal generado |
+| Objeto | Fórmula corregida y verificada en el PDF | Lean final |
 |---|---|---|
-| Efecto relativo de automatizar | $-\Lambda_I/(\widehat\sigma+\varepsilon_L)$ | `-1 / (sigmaHat + epsilonL * lambdaI)` |
-| Efecto relativo de nuevas tareas | $\Lambda_N/(\widehat\sigma+\varepsilon_L)$ | `1 / (sigmaHat + epsilonL * lambdaN)` |
-| Elasticidad libre | $\widehat\sigma+\Lambda_I/\varepsilon_\gamma$ | `sigmaHat + 1 / (epsilonGamma * lambdaI)` |
+| Efecto relativo de automatizar | $-\Lambda_I/(\widehat\sigma+\varepsilon_L)$ | `-lambdaI / (sigmaHat + epsilonL)` |
+| Efecto relativo de nuevas tareas | $\Lambda_N/(\widehat\sigma+\varepsilon_L)$ | `lambdaN / (sigmaHat + epsilonL)` |
+| Elasticidad libre | $\widehat\sigma+\Lambda_I/\varepsilon_\gamma$ | `sigmaHat + lambdaI / epsilonGamma` |
 
-Aunque los signos compilados coinciden para parámetros positivos, **las funciones son diferentes**. El compilador prueba las funciones escritas, no las fórmulas del PDF. Por tanto, `proposition2ComparativeStaticsCore` no recibe crédito de correspondencia con Prop. 2. Es un error de traducción del agente, no del paper.
+La primera copia compilaba fórmulas distintas. Ese fue un error de traducción del agente, no del paper; la compilación sola no lo detectaba. La copia final reemplaza aquella versión con el directorio entero regenerado.
 
-`proposition3WageRentalDecomposition` toma reales `laborShare`, `productivityI`, `productivityN`, `relativeI`, `relativeN` y presupone sus signos. Comprueba consecuencias algebraicas de `wageChange = productivity + (1-laborShare)*relativePriceChange`, incluyendo la implicación salarial mostrada en la diapositiva. **No** representa derivadas de funciones de equilibrio ni prueba que Assumptions 1–3 generen los coeficientes. El bloque de Prop. 3 no llama al bloque erróneo de Prop. 2 para construir sus variables: esos números entran como parámetros.
+### Resultado de la revisión independiente
 
-Esta inspección es una observación externa a la copia y **no sustituye** los juicios independientes ni los recibos del protocolo. No se ha fabricado una auditoría en `lean/audit/`. No hay prueba completa de Props. 1–6, dinámica, equilibrio de esquina ni umbral de capital.
+Un revisor aislado examinó el inventario de la fuente completa y volvió a inspeccionar visualmente la página 11; corrigió también una lectura inicial equivocada de los paréntesis en su propio diagnóstico. Otro revisor, sin contexto de autoría, contrastó los pasajes pertinentes y los tres módulos completos. Su revisión acotada produjo:
+
+- **2** juicios `matches_selected_algebraic_atom`: las dos pruebas coinciden con sus fragmentos algebraicos seleccionados.
+- **2** juicios `not_covered`: ninguna prueba equivale a la proposición completa correspondiente.
+- **0** discrepancias en los fragmentos revisados.
+
+Son diagnósticos independientes, **no recibos aceptados del protocolo global**. El informe generado distingue expresamente esas categorías. No hay un grafo de obligaciones aceptado, panel adversarial final ni certificado de cierre; el planner además solicita registrar la transición local de `lakefile.toml`. Resolver ese paso mecánico no probaría los resultados económicos aún ausentes.
+
+`proposition2ComparativeStaticsCore` prueba signos de expresiones cuyos argumentos positivos se suministran como números reales. No define las integrales que generan $\Lambda_I,\Lambda_N$, ni conecta las expresiones con derivadas del equilibrio, regímenes de adopción, empleo o participación.
+
+`proposition3WageRentalDecomposition` toma reales `laborShare`, `productivityI`, `productivityN`, `relativeI`, `relativeN` y presupone sus signos. Comprueba consecuencias de `wageChange = productivity + (1-laborShare)*relativePriceChange`, incluida la implicación salarial del deck. **No** representa derivadas de funciones de equilibrio ni demuestra que Assumptions 1–3 generen los coeficientes. Tampoco prueba el umbral de capital ni la existencia de una economía que realice cada rama de signo. Las otras proposiciones del paper permanecen fuera de esta formalización parcial.
 
 ### Integridad de la copia y archivos ignorados
 
-Se copió el directorio entero `papers/AR18RaceManMachine/` a `lean/` después de guardar la salida del check. Se compararon nombres y SHA-256 de **23 archivos**: coincidencia exacta. El manifiesto técnico se conserva localmente fuera del repositorio. Se ejecutó `git add lean/` sin `-f`. La revisión global de espacios señala una línea vacía final en `lean/PAPER_NOTES.md:29`; se conserva para respetar la copia literal. El check del workflow no la detectó porque ese archivo aún no estaba incorporado a su índice Git.
-
-Archivos presentes en la copia local y excluidos por su propio `.gitignore`:
+Se copia íntegramente `papers/AR18RaceManMachine/` a `lean/` después del último check, verificando nombres y SHA-256 de los **25 archivos**: coincidencia exacta. De ellos, 23 quedan versionados y 2 fuentes permanecen ignoradas. El manifiesto técnico se conserva localmente fuera del repositorio. Se ejecuta `git add lean/` sin `-f`. Los archivos presentes localmente y excluidos por el `.gitignore` del workflow son:
 
 ```text
 lean/source/paper.pdf
 lean/source/source.txt
 ```
 
-`repository_visibility: private_only` es el valor por defecto del scaffold conservado. La publicación de esta copia de curso fue expresamente solicitada por la usuaria; no significa que AppliedModelingLib haya aprobado un release o un cambio de estado. El paper y sus textos fuente no se publican.
+El valor de visibilidad del scaffold se preserva como lo dejó el workflow. La publicación de esta copia fue expresamente solicitada por la usuaria; no se presenta como una aprobación de release por AppliedModelingLib. El paper y su texto fuente no se publican.
 
-El directorio copiado no es un proyecto Lean autónomo: importa Mathlib y requiere el clone de AppliedModelingLib, su archivo raíz `papers/AR18RaceManMachine.lean` y la entrada de `lakefile.toml` generados por el workflow. Para reproducir ese run, partir del commit indicado, activar Python >=3.11 y el toolchain Lean, ejecutar el mismo prompt/workflow y conservar el scaffold generado. El comando `check` del README se ejecuta en ese clone; no basta entrar en `lean/`.
+La carpeta copiada requiere el clone de AppliedModelingLib, Mathlib, el archivo raíz generado `papers/AR18RaceManMachine.lean` y su entrada en `lakefile.toml`. Para reproducir el run, partir del commit indicado, activar Python >=3.11 y el toolchain Lean, ejecutar el prompt/workflow registrado y conservar el scaffold. El comando `check` se ejecuta en ese clone; no basta entrar en `lean/`.
 
-### Bloqueos para continuar
+### Deuda de formalización, no errores ocultos
 
-1. Reanudar el workflow con el modelo requerido cuando vuelva a estar disponible.
-2. Corregir **dentro del workflow**, no sobre la copia entregada, las tres fórmulas de `PaperInterface.lean` de Prop. 2 y reconstruir sus pruebas.
-3. Conectar los parámetros algebraicos de Prop. 3 con derivadas de equilibrio y todas sus condiciones, o mantener explícitamente el alcance parcial.
-4. Actualizar inventario/estado y ejecutar revisiones independientes y cierre del protocolo. Repetir el check, copiar nuevamente la carpeta completa y actualizar el deck.
+La reparación y revisión acotadas están terminadas. El agente volvió a alcanzar su límite de uso después de guardar el informe parcial; el coordinador repitió build/check y realizó la copia literal final. Quedan restos documentales del scaffold: `review_entrypoint` apunta a un `FINAL_VALIDATION_REPORT.md` inexistente y una tabla de `docs/FORMALIZATION_NOTES.md` conserva texto de plantilla. Se preservan por integridad; el informe vigente es `PARTIAL_FORMALIZATION_REPORT.md`, no un reporte de cierre. Sigue pendiente una formalización completa: derivar los coeficientes desde el equilibrio, cubrir todas las cláusulas y resultados, y completar las revisiones y el cierre global. Este alcance parcial debe mantenerse visible al presentar el trabajo. No se atribuye un teorema económico completo a dos pruebas algebraicas correctas.
 
 ## Guion para 20 minutos
 
@@ -101,7 +101,7 @@ El directorio copiado no es un proyecto Lean autónomo: importa Mathlib y requie
 
 ## Fragilidades que deben revisarse antes del merge
 
-- **Lean:** check 0 y build 0 no acreditan el modelo. Hay un error de traducción confirmado y el run está incompleto.
+- **Lean:** las tres traducciones se corrigieron y los dos fragmentos fueron revisados, pero check 0 y build 0 no acreditan el modelo completo. Distinguir prueba algebraica de derivación de equilibrio y de cierre global.
 - **Esquina y crecimiento:** distinguir el crecimiento de la senda tecnológica candidata del crecimiento AK y no leer $\rho_c(g)$ como umbral numérico independiente de $g$. Revisar NBER pp. 16–18 y prueba p. 43.
 - **Versiones:** las cláusulas sobre el umbral $K$ cambian entre NBER p. 13 y AER p. 1502. La condición central aquí es $P_I>D_I$; el umbral cerrado de `extensions.md` corresponde solo a nuestra especialización.
 - **Representatividad:** preferencias específicas, tareas ordenadas e innovación con científicos escasos no son evidencia de autocorrección universal en economías reales.

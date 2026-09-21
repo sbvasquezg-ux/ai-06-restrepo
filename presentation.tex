@@ -231,7 +231,7 @@ intro h
 nlinarith
 \end{lstlisting}
 \scriptsize $s_L$, productividad y cambio relativo son reales suministrados. \texttt{nlinarith} comprueba la implicación algebraica. \textbf{No prueba} que el equilibrio genere esas derivadas.\\[.3em]
-\alert{Build parcial compilado; check --fast: exit 0. Cierre semántico pendiente.} La traducción de Prop. 2 confunde multiplicación y denominador; se conserva y señala, sin arreglar la copia a mano.
+\alert{Formalización parcial: build y check --fast, exit 0.} Tres fórmulas corregidas dentro del workflow. Revisión independiente: dos fragmentos algebraicos coinciden; ninguna proposición completa está cubierta. Sin certificación global.
 \sourcefoot{\NBER, Prop. 3 p. 13; copia literal del run GPT-5.6 Sol/xhigh, PaperInterface.lean y MainTheorems.lean.}
 \end{frame}
 

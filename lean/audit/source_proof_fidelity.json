@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "paper": "AR18RaceManMachine",
-  "source_artifact_path": "",
-  "source_artifact_sha256": "",
+  "source_artifact_path": "papers/AR18RaceManMachine/source/paper.pdf",
+  "source_artifact_sha256": "441d01202afd56ef8002fc24ffc2beb51191741c0b5accb11d2534620dd616b7",
   "review_status": "not_started",
   "reviewed_proof_scopes": [],
   "model_conventions": [],
