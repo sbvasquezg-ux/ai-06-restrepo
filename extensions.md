@@ -185,4 +185,4 @@ SymPy comprueba el álgebra condicional y una frontera de una especialización. 
 
 El pasaje del umbral de capital en NBER p. 13 y AER p. 1502 difiere incluso en la dirección de sus desigualdades. El apéndice NBER B-12–B-13 verifica el sistema salarial, pero no desarrolla una prueba explícita del inciso de umbral en $K$. Se preserva esa diferencia en el mapa de fuentes, sin fabricar una reconciliación. Nuestro umbral propio de §5 no depende de adoptar ese inciso.
 
-Antes del merge: comprobar a mano (B9)–(B10), las definiciones de producto neto y elasticidad, y la condición salarial; revisar el cambio de régimen en la figura; revisar por separado la lectura de la esquina y el estado real de Lean. La estudiante debe aportar su propia evidencia manuscrita.
+Antes del merge: comprobar a mano (B9)–(B10), las definiciones de producto neto y elasticidad, y la condición salarial; revisar el cambio de régimen en la figura; revisar por separado la lectura de la esquina y el estado real de Lean. La evidencia manuscrita ya está en `hand/manual-verification.png`; su especialización de trabajo fijo y las precisiones a sus conclusiones se explican en `hand/README.md`.

@@ -287,3 +287,12 @@ Use AR18RaceManMachine as the paper folder.
 ```
 
 Configuración solicitada y usada en el subagente del workflow: `gpt-5.6-sol`, `xhigh`. El handoff también indicó las rutas del clone, Python compatible y PDF fijado; no se presenta el prompt anterior como el único contexto recibido. El resultado y los límites se conservan en `lean/`, junto con `CHECK_OUTPUT.txt`.
+
+
+## Continuación del 21 de septiembre de 2026 — mensaje literal de la usuaria
+
+```text
+esta es mi parte escrita, porfa incluyela y termina todo
+```
+
+Adjunto original conservado en `hand/manual-verification.png`. No se presenta una transcripción automática de la escritura como si fuera un prompt.

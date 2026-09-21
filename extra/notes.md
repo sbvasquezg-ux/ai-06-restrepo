@@ -6,12 +6,13 @@
 - Entorno científico probado: NumPy 2.5.3, SciPy 1.18.1, SymPy 1.14.0, Matplotlib 3.11.2. `requirements.txt` fija mínimos compatibles; no promete reproducibilidad bit a bit con futuras versiones.
 - Compilador: **LuaHBTeX 1.24.0 / TeX Live 2026**. `presentation.pdf` contiene **16 páginas**, un único deck, sin animaciones. Compilación final sin errores ni advertencias de cajas desbordadas.
 - `sim.py`: verificaciones simbólicas, residuos de equilibrio y diferencias finitas aprobadas. Las figuras usan únicamente elaboración propia.
-- Foto manuscrita: **pendiente**. El deck muestra el estado pendiente y la incluye automáticamente si aparece `hand/manual-verification.png` al recompilar.
+- Foto manuscrita: **recibida el 21 de septiembre de 2026**, copiada sin retoques e incluida en la diapositiva 16. Su caso fija trabajo; `hand/README.md` y el deck explican sus condiciones y matizan dos frases demasiado generales.
 - No hay una estimación causal ni calibración empírica. Las cifras pertenecen a una especialización ilustrativa.
 
 ## Salida de la simulación
 
 ```text
+Handwritten fixed-L audit: PASS (wage, labor share, general-form equivalence, sigma=1 limit)
 SymPy: PASS (B9-B10, reinstatement, sigma=1 limit, exact K threshold, household supply)
 Domains: W,R,B,gamma>0; 0<sL<1; s,epsilon>0; 0<I<1 in the closed form.
 s=1.5, K=1, I=0.1: W=3.50487439, sL=0.86164426, P=1.58645924, D=0.93903921, dlnW/dI=0.64742003
@@ -104,7 +105,7 @@ El directorio copiado no es un proyecto Lean autónomo: importa Mathlib y requie
 - **Esquina y crecimiento:** distinguir el crecimiento de la senda tecnológica candidata del crecimiento AK y no leer $\rho_c(g)$ como umbral numérico independiente de $g$. Revisar NBER pp. 16–18 y prueba p. 43.
 - **Versiones:** las cláusulas sobre el umbral $K$ cambian entre NBER p. 13 y AER p. 1502. La condición central aquí es $P_I>D_I$; el umbral cerrado de `extensions.md` corresponde solo a nuestra especialización.
 - **Representatividad:** preferencias específicas, tareas ordenadas e innovación con científicos escasos no son evidencia de autocorrección universal en economías reales.
-- **Foto:** realizar la derivación de `hand/README.md`, fotografiarla, añadirla y recompilar. El deck actual no satisface todavía el requisito de una foto auténtica en pantalla.
+- **Foto:** verificar la distinción entre trabajo fijo en la hoja y oferta creciente en el modelo principal. Leer las dos precisiones junto a la imagen: ahorro de costos nulo y supuestos del resultado de participación.
 
 ## Git y entrega
 

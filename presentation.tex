@@ -236,27 +236,27 @@ nlinarith
 \end{frame}
 
 % 16 -- 1:45
-\begin{frame}{El veredicto debe sostenerse a mano}
+\begin{frame}{La derivación manuscrita: veredicto y condiciones}
 \begin{columns}[T,onlytextwidth]
-\column{.56\textwidth}
-\small
-\textbf{Lo que no aceptamos de una respuesta automática}: inferir salario decreciente a partir de participación decreciente.
+\column{.62\textwidth}
+\footnotesize
+\textbf{Foto original de la estudiante.} La hoja fija $K,L,N$ y normaliza $B=1$, $\eta=0$; usa un umbral efectivo interior.
 \[
-\partial_I W>0\iff P_I>D_I.
+\sigma\,\partial_I\ln W
+=\underbrace{\frac{p_L^{1-\sigma}-p_K^{1-\sigma}}{1-\sigma}}_{P:\ \text{productividad}}
+-\underbrace{\frac{p_L^{1-\sigma}}{s_L}}_{\text{desplazamiento}}.
 \]
-\begin{keybox}\textbf{Veredicto}: el titular es falso como necesidad y correcto como posibilidad condicionada.\end{keybox}
-\medskip
-Antes de presentar: copiar la derivación, revisar la desigualdad, añadir la foto y recompilar. La evidencia manual todavía falta.
-\column{.40\textwidth}
-\IfFileExists{hand/manual-verification.png}{%
-\includegraphics[width=\linewidth,height=.59\textheight,keepaspectratio]{hand/manual-verification.png}%
-}{%
-\begin{beamercolorbox}[sep=1em]{block body}
-\textbf{Foto pendiente de la estudiante}\\[1em]
-\small \texttt{hand/manual-verification.png}\\[1em]
-La guía termina en la condición salarial. No se ha generado ni simulado una fotografía.
-\end{beamercolorbox}}
+\begin{keybox}\textbf{El salario sube si} $P>p_L^{1-\sigma}/s_L$. La participación cae dentro de este régimen.\end{keybox}
+\smallskip
+\textbf{Dos precisiones a la hoja:}
+\begin{itemize}
+\item ``Marginal siempre baja'' aplica cuando $p_K\to p_L$, no a cualquier incremento de $I$.
+\item ``Sin ninguna condición'' conserva los supuestos anteriores. Para $\sigma=1$, usar el límite logarítmico.
+\end{itemize}
+\column{.35\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=.61\textheight,keepaspectratio]{hand/manual-verification.png}
 \end{columns}
-\sourcefoot{Derivación propia de \NBER, Prop. 3 p. 13 y ecs. (B9)--(B10), p. B-13; hand/README.md.}
+\sourcefoot{Foto aportada por la estudiante; especialización propia de \NBER, Prop. 3 p. 13 y (B9)--(B10), p. B-13.}
 \end{frame}
 \end{document}

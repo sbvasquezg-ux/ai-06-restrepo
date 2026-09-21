@@ -94,7 +94,8 @@ Las figuras se regeneran sin argumentos. El check pertenece al clone de la bibli
 │   │   └── displacement-productivity.png
 │   └── notes.md
 ├── hand/
-│   └── README.md
+│   ├── README.md
+│   └── manual-verification.png
 ├── lean/                      # carpeta íntegra del run, con sus subcarpetas
 ├── paper/
 │   ├── README.md
@@ -110,7 +111,7 @@ Las figuras se regeneran sin argumentos. El check pertenece al clone de la bibli
 └── .gitignore
 ```
 
-La estudiante añade después su propia foto en `hand/`; este repositorio no inventa esa evidencia.
+La estudiante aportó su [foto original](hand/manual-verification.png), incluida en el deck. [hand/README.md](hand/README.md) distingue su caso de trabajo fijo y precisa el alcance de sus conclusiones; este repositorio no inventa esa evidencia.
 
 ## Referencia
 

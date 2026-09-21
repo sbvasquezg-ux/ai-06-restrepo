@@ -57,6 +57,18 @@ def symbolic_checks():
     elastic=sp.simplify(omega/(l*sp.diff(omega,l)))
     assert sp.simplify(elastic-(1-l*l)/(1+l*l)) == 0
     assert sp.simplify(omega*l/(1+omega*l)-l*l) == 0
+    # Student's handwritten specialization: fixed L, eta=0, B=1.
+    a,b=sp.symbols('a b', positive=True)
+    fixed_productivity=(a-b)/(1-s)
+    fixed_wage=(fixed_productivity-a/sl)/s
+    fixed_share=-((1-sl)*a/sl+b)/s
+    assert sp.simplify(fixed_wage-fixed_productivity-fixed_share) == 0
+    # With gamma_K=1, b=(1-sl)/(I-N+1), a/sl=gamma(I)^(s-1)/H.
+    fixed_lambda=a/sl+b/(1-sl)
+    assert sp.simplify(fixed_wage-(fixed_productivity-(1-sl)*fixed_lambda/s)) == 0
+    pL,pK=sp.symbols('pL pK', positive=True)
+    assert sp.simplify(sp.limit((pL**(1-s)-pK**(1-s))/(1-s),s,1)-sp.log(pL/pK)) == 0
+    print('Handwritten fixed-L audit: PASS (wage, labor share, general-form equivalence, sigma=1 limit)')
     print('SymPy: PASS (B9-B10, reinstatement, sigma=1 limit, exact K threshold, household supply)')
     print('Domains: W,R,B,gamma>0; 0<sL<1; s,epsilon>0; 0<I<1 in the closed form.')
 
